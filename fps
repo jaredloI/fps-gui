@@ -88,7 +88,7 @@ function library:CreateWatermark(name)
     watermark.label.Font = library.theme.font
     watermark.label.ZIndex = 6
     watermark.label.Visible = watermark.Visible
-    watermark.label.Text = " ".. name .." | ".. gamename .." | 0 FPS"
+    watermark.label.Text = " ".. name .." | 0 FPS"
     watermark.label.TextColor3 = Color3.fromRGB(255, 255, 255)
     watermark.label.TextSize = 15.000
     watermark.label.TextStrokeTransparency = 0.000
@@ -130,7 +130,7 @@ function library:CreateWatermark(name)
             startTime = currentTime
 
             if fps ~= oldfps then
-                watermark.label.Text = " " .. name .." | ".. gamename .." | " .. fps .." FPS"
+                watermark.label.Text = " " .. name .." | " .. fps .." FPS"
 
                 watermark.label.Size = UDim2.new(0, watermark.label.TextBounds.X+10, 0, 25)
                 watermark.mainbar.Size = UDim2.new(0, watermark.label.TextBounds.X+6, 0, 25)
