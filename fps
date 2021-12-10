@@ -49,7 +49,7 @@ function library:CreateWatermark(name)
         getgenv().watermark:Remove()
     end
     getgenv().watermark = watermark.main
-    
+
     watermark.mainbar = Instance.new("Frame", watermark.main)
     watermark.mainbar.Name = "Main"
     watermark.mainbar.BorderColor3 = Color3.fromRGB(80, 80, 80)
@@ -94,7 +94,7 @@ function library:CreateWatermark(name)
     watermark.label.TextStrokeTransparency = 0.000
     watermark.label.TextXAlignment = Enum.TextXAlignment.Left
     watermark.label.Size = UDim2.new(0, watermark.label.TextBounds.X+10, 0, 25)
-    
+
     watermark.topbar = Instance.new("Frame", watermark.mainbar)
     watermark.topbar.Name = "TopBar"
     watermark.topbar.ZIndex = 6
@@ -130,8 +130,8 @@ function library:CreateWatermark(name)
             startTime = currentTime
 
             if fps ~= oldfps then
-                watermark.label.Text = " " .. name .." " .. fps .." FPS"
-    
+                watermark.label.Text = " " .. name .." | ".. gamename .." | " .. fps .." FPS"
+
                 watermark.label.Size = UDim2.new(0, watermark.label.TextBounds.X+10, 0, 25)
                 watermark.mainbar.Size = UDim2.new(0, watermark.label.TextBounds.X+6, 0, 25)
                 watermark.topbar.Size = UDim2.new(0, watermark.label.TextBounds.X+6, 0, 1)
@@ -150,7 +150,7 @@ function library:CreateWatermark(name)
         tweenservice:Create(watermark.Outline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
         tweenservice:Create(watermark.BlackOutline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
     end)
-    
+
     watermark.mainbar.MouseLeave:Connect(function()
         tweenservice:Create(watermark.mainbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
         tweenservice:Create(watermark.topbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
@@ -194,7 +194,7 @@ function library:CreateWindow(name, size, hidebutton)
             dragging = true
             dragStart = input.Position
             startPos = window.Frame.Position
-            
+
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
@@ -364,7 +364,7 @@ function library:CreateWindow(name, size, hidebutton)
             wait(0.2)
             block = false
         end
-    
+
         if #window.Tabs == 0 then
             tab:SelectTab()
         end
@@ -380,7 +380,7 @@ function library:CreateWindow(name, size, hidebutton)
             local sector = { }
             sector.name = name or ""
             sector.side = side or "left"
-            
+
             sector.Main = Instance.new("Frame", tab.TabPage) 
             sector.Main.Name = sector.name:gsub(" ", "") .. "Sector"
             sector.Main.BorderColor3 = window.theme.outlinecolor
@@ -551,13 +551,13 @@ function library:CreateWindow(name, size, hidebutton)
                 sector:FixSize()
                 return label
             end
-            
+
             function sector:AddToggle(text, default, callback)
                 local toggle = { }
                 toggle.text = text or ""
                 toggle.default = default or false
                 toggle.callback = callback or function(value) end
-                
+
                 toggle.value = toggle.default
 
                 toggle.Main = Instance.new("TextButton", sector.Items)
@@ -588,7 +588,7 @@ function library:CreateWindow(name, size, hidebutton)
                 toggle.BlackOutline.BorderSizePixel = 0
                 toggle.BlackOutline.BackgroundColor3 = window.theme.outlinecolor2
                 toggle.BlackOutline.Position = UDim2.fromOffset(-2, -2)
-                
+
                 toggle.Gradient = Instance.new("UIGradient", toggle.Main)
                 toggle.Gradient.Rotation = (22.5 * 13)
                 toggle.Gradient.Color = ColorSequence.new({ ColorSequenceKeypoint.new(0.00, Color3.fromRGB(30, 30, 30)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(45, 45, 45)) })
@@ -717,7 +717,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.Outline.BorderSizePixel = 0
                     colorpicker.Outline.BackgroundColor3 = window.theme.outlinecolor
                     colorpicker.Outline.Position = UDim2.fromOffset(-1, -1)
-    
+
                     colorpicker.BlackOutline = Instance.new("Frame", colorpicker.Main)
                     colorpicker.BlackOutline.Name = "blackline"
                     colorpicker.BlackOutline.ZIndex = 4
@@ -760,7 +760,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.Outline2.BorderSizePixel = 0
                     colorpicker.Outline2.BackgroundColor3 = window.theme.outlinecolor
                     colorpicker.Outline2.Position = UDim2.fromOffset(-1, -1)
-    
+
                     colorpicker.BlackOutline2 = Instance.new("Frame", colorpicker.MainPicker)
                     colorpicker.BlackOutline2.Name = "blackline"
                     colorpicker.BlackOutline2.ZIndex = 98
@@ -793,7 +793,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.selector.BackgroundColor3 = Color3.fromRGB(255,255,255)
                     colorpicker.selector.BorderColor3 = window.theme.outlinecolor2
                     colorpicker.selector.Text = ""
-        
+
                     colorpicker.gradient = Instance.new("UIGradient", colorpicker.selector)
                     colorpicker.gradient.Color = ColorSequence.new({ ColorSequenceKeypoint.new(0, Color3.new(1,0,0)), ColorSequenceKeypoint.new(0.25,Color3.new(1,0,1)), ColorSequenceKeypoint.new(0.5,Color3.new(0,1,1)), ColorSequenceKeypoint.new(0.75,Color3.new(1,1,0)), ColorSequenceKeypoint.new(1,Color3.new(1,0,0))})
 
@@ -841,7 +841,7 @@ function library:CreateWindow(name, size, hidebutton)
                             colorpicker:RefreshSelector()
                         end
                     end)
-    
+
                     colorpicker.selector.InputEnded:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.MouseButton1 then
                             dragging_selector = false
@@ -855,14 +855,14 @@ function library:CreateWindow(name, size, hidebutton)
                             colorpicker:RefreshHue()
                         end
                     end)
-    
+
                     colorpicker.hue.InputEnded:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.MouseButton1 then
                             dragging_hue = false
                             colorpicker:RefreshHue()
                         end
                     end)
-    
+
                     uis.InputChanged:Connect(function(input)
                         if dragging_selector and input.UserInputType == Enum.UserInputType.MouseMovement then
                             colorpicker:RefreshSelector()
@@ -934,7 +934,7 @@ function library:CreateWindow(name, size, hidebutton)
                 sector:FixSize()
                 return toggle
             end
-            
+
             function sector:AddTextbox(text, default, callback)
                 local textbox = { }
                 textbox.text = text or ""
@@ -1020,7 +1020,7 @@ function library:CreateWindow(name, size, hidebutton)
                 sector:FixSize()
                 return textbox
             end
-            
+
             function sector:AddSlider(text, min, default, max, decimals, callback)
                 local slider = { }
                 slider.text = text or ""
@@ -1303,7 +1303,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.selector.BackgroundColor3 = Color3.fromRGB(255,255,255)
                 colorpicker.selector.BorderColor3 = window.theme.outlinecolor2
                 colorpicker.selector.Text = ""
-    
+
                 colorpicker.gradient = Instance.new("UIGradient", colorpicker.selector)
                 colorpicker.gradient.Color = ColorSequence.new({ ColorSequenceKeypoint.new(0, Color3.new(1,0,0)), ColorSequenceKeypoint.new(0.25,Color3.new(1,0,1)), ColorSequenceKeypoint.new(0.5,Color3.new(0,1,1)), ColorSequenceKeypoint.new(0.75,Color3.new(1,1,0)), ColorSequenceKeypoint.new(1,Color3.new(1,0,0))})
 
@@ -1686,7 +1686,7 @@ function library:CreateWindow(name, size, hidebutton)
 
                         dropdown.ItemsFrame.Size = UDim2.fromOffset(dropdown.Main.Size.X.Offset, math.clamp(#dropdown.items * item.AbsoluteSize.Y, 20, 156) + 4)
                         dropdown.ItemsFrame.CanvasSize = UDim2.fromOffset(dropdown.ItemsFrame.AbsoluteSize.X, (#dropdown.items * item.AbsoluteSize.Y) + 4)
-    
+
                         dropdown.OutlineItems.Size = dropdown.ItemsFrame.Size + UDim2.fromOffset(2, 2)
                         dropdown.BlackOutlineItems.Size = dropdown.ItemsFrame.Size + UDim2.fromOffset(4, 4)
                         dropdown.IgnoreBackButtons.Size = dropdown.ItemsFrame.Size
